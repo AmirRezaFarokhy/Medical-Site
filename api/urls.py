@@ -10,7 +10,7 @@ from api.views import (
 
 urlpatterns = [
     path('', CreateListAPIView, name='apiview'),
-    # path('<int:pk>', retrieve_apiview, name='idapiview'),
+    path('<int:pk>/', RetrieveAPIView, name='idapiview'),
     # path('<int:pk>/update', update_apiview, name='updateapiview'),
     # path('<int:pk>/delete', delete_apiview, name='deleteapiview'),
 ]

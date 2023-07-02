@@ -39,3 +39,8 @@ def RetrieveAPIView(request, pk):
 
         return Response({"invalid": "not good url id"}, 
                         status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
