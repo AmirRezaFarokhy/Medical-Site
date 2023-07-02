@@ -13,6 +13,30 @@ from api.serializers import SerializetionPatient
 from main.models import Doctor, PatientProfile
 
 
+def validateCustomer(customer):
+    error_message = None
+    if (not customer.name):
+        error_message = "Please Enter your First Name !!"
+    elif len(customer.name) < 3:
+        error_message = 'First Name must be 3 char long or more'
+    elif not customer.lastname:
+        error_message = 'Please Enter your Last Name'
+    elif len(customer.lastname) < 3:
+        error_message = 'Last Name must be 3 char long or more'
+    elif not customer.phone:
+        error_message = 'Enter your Phone Number'
+    elif len(customer.phone) < 10:
+        error_message = 'Phone Number must be 10 char Long'
+    elif len(customer.password) < 5:
+        error_message = 'Password must be 5 char long'
+    elif len(customer.email) < 5:
+        error_message = 'Email must be 5 char long'
+    elif customer.ifExist():
+        error_message = 'Email Address Already Registered..'
+
+    return error_message
+
+
 class Login(View):
 
     return_url = None
@@ -72,7 +96,7 @@ class Signup(View):
                              email=email,
                              password=password)
 
-        error_message = self.validateCustomer(customer)
+        error_message = validateCustomer(customer)
         print(error_message)
         if not error_message:
             print(first_name, last_name, phone, email, password)
@@ -87,30 +111,6 @@ class Signup(View):
             return render(request=request, 
                           template_name='main/signup.html', 
                           context={"data":data})
-
-
-    def validateCustomer(self, customer):
-        error_message = None
-        if (not customer.firstname):
-            error_message = "Please Enter your First Name !!"
-        elif len(customer.firstname) < 3:
-            error_message = 'First Name must be 3 char long or more'
-        elif not customer.lastname:
-            error_message = 'Please Enter your Last Name'
-        elif len(customer.lastname) < 3:
-            error_message = 'Last Name must be 3 char long or more'
-        elif not customer.phone:
-            error_message = 'Enter your Phone Number'
-        elif len(customer.phone) < 10:
-            error_message = 'Phone Number must be 10 char Long'
-        elif len(customer.password) < 5:
-            error_message = 'Password must be 5 char long'
-        elif len(customer.email) < 5:
-            error_message = 'Email must be 5 char long'
-        elif customer.ifExist():
-            error_message = 'Email Address Already Registered..'
-
-        return error_message
 
 
 class SearchView(ListView):
@@ -134,31 +134,6 @@ class SearchView(ListView):
 def logout(request):
     request.session.clear()
     return redirect('login')
-
-
-
-def validateCustomer(customer):
-    error_message = None
-    if (not customer.name):
-        error_message = "Please Enter your First Name !!"
-    elif len(customer.name) < 3:
-        error_message = 'First Name must be 3 char long or more'
-    elif not customer.lastname:
-        error_message = 'Please Enter your Last Name'
-    elif len(customer.lastname) < 3:
-        error_message = 'Last Name must be 3 char long or more'
-    elif not customer.phone:
-        error_message = 'Enter your Phone Number'
-    elif len(customer.phone) < 10:
-        error_message = 'Phone Number must be 10 char Long'
-    elif len(customer.password) < 5:
-        error_message = 'Password must be 5 char long'
-    elif len(customer.email) < 5:
-        error_message = 'Email must be 5 char long'
-    elif customer.ifExist():
-        error_message = 'Email Address Already Registered..'
-
-    return error_message
 
 
 def homepage(request):
