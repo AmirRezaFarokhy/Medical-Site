@@ -23,7 +23,7 @@ class Login(View):
     def post(self, request):
         email = request.POST.get("email")
         password = request.POST.get("password")
-        customer = Customers.get_customers_by_email(email)
+        customer = Doctor.get_customers_by_email(email)
         error_message = None
         if customer:
             flag = check_password(password, customer.password)
@@ -66,7 +66,7 @@ class Signup(View):
         }
 
         error_message = None
-        customer = Customers(firstname=first_name,
+        customer = Doctor(firstname=first_name,
                              lastname=last_name,
                              phone=phone,
                              email=email,
@@ -137,8 +137,62 @@ def logout(request):
 
 
 
+def validateCustomer(customer):
+    error_message = None
+    if (not customer.name):
+        error_message = "Please Enter your First Name !!"
+    elif len(customer.name) < 3:
+        error_message = 'First Name must be 3 char long or more'
+    elif not customer.lastname:
+        error_message = 'Please Enter your Last Name'
+    elif len(customer.lastname) < 3:
+        error_message = 'Last Name must be 3 char long or more'
+    elif not customer.phone:
+        error_message = 'Enter your Phone Number'
+    elif len(customer.phone) < 10:
+        error_message = 'Phone Number must be 10 char Long'
+    elif len(customer.password) < 5:
+        error_message = 'Password must be 5 char long'
+    elif len(customer.email) < 5:
+        error_message = 'Email must be 5 char long'
+    elif customer.ifExist():
+        error_message = 'Email Address Already Registered..'
+
+    return error_message
+
+
 def homepage(request):
+    postdata = request.POST 
+    name = postdata.get('name')
+    lastname = postdata.get('lastname')
+    age = postdata.get('age')
+    description = postdata.get('description')
+    email = postdata.get('email')
+
+    values = {
+        'name': name, 
+        'last_name': lastname,
+        'age': age,
+        'description': description,
+        'email': email
+    }
+
+    error_message = None
+    patient = PatientProfile(name=name,
+                             last_name=lastname,
+                             age=age,
+                             description=description,
+                             email=email)
+    error_message = validateCustomer(patient)
+    print(error_message)
+
+    if not error_message:
+        print(values)
+        patient.register()
+        return redirect('main:homepage')
+
     return render(request, 
-                  template_name='main/home.html',
-                  context={'data':PatientProfile.objects.all()})
+                  template_name='main/home.html')
+
+
 
