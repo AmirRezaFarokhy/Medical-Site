@@ -3,4 +3,72 @@
 {% block content %}
 
 
+<div class="container">
+    <div class="p-3 m-3">
+        <div class="col-lg-5 rounded mx-auto border pt-4">
+            <div class="text-center col">
+            
+            </div>
+            <h3 class="alert alert-light rounded-pill" style="text-align:center" >Patient Profile</h3>
+            <form method="POST">
+                
+                {% csrf_token %}
+
+                {% if error%}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endif %}
+
+
+                <div class="form-group">
+                    <label for="">name</label>
+                    <input type="text" 
+                    name="text" 
+                    id=""
+                     class="form-control form-control-sm" >
+                </div>
+
+                <div class="form-group">
+                    <label for="">last name</label>
+                    <input type="text" 
+                    name="text" 
+                    id=""
+                     class="form-control form-control-sm" >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="">age</label>
+                    <input type="text" 
+                    name="text" 
+                    id=""
+                     class="form-control form-control-sm" >
+                </div>
+
+                <div class="form-group">
+                    <label for="">description</label>
+                    <input type="text" 
+                    name="text" 
+                    id=""
+                     class="form-control form-control-sm" >
+                </div>
+
+
+                <!-- email -->
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input required type="email" name="email" id=""
+                    value="{{values.email}}" 
+                    class=" form-control-sm form-control" placeholder="abc@gmail.com">
+                </div>
+
+                <button type="submit" class="btn btn-sm btn-success col-lg-12">Save Data</button>
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}
