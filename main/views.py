@@ -1,9 +1,14 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import check_password
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password 
+from django.views.generic import ListView
+from django.db.models import Q
 from django.http import HttpResponse
 from django.views import View 
 from django.contrib import messages 
+
+from rest_framework import generics
+from api.serializers import SerializetionPatient 
 
 from main.models import Doctor, PatientProfile
 
@@ -108,11 +113,32 @@ class Signup(View):
         return error_message
 
 
+class SearchView(ListView):
+    model = PatientProfile
+    template_name = "main/search_result.html"
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = PatientProfile.objects.filter(
+            Q(name__icontains=query),
+            Q(last_name__icontains=query),
+            Q(age__icontains=query),
+            Q(email__icontains=query),
+        )
+        if object_list.exists():
+            return object_list
+        else:
+            return messages.info(self.request, "Your data is't available...")
+
+
 def logout(request):
     request.session.clear()
     return redirect('login')
 
+
+
 def homepage(request):
     return render(request, 
-                  template_name='main/home.html')
+                  template_name='main/home.html',
+                  context={'data':PatientProfile.objects.all()})
 
