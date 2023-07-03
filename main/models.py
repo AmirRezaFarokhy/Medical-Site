@@ -12,7 +12,14 @@ class PatientProfile(models.Model):
 class Doctor(models.Model):
     patient = models.ManyToManyField(PatientProfile)
     doctor = models.CharField(max_length=100)
+    password = models.CharField(max_length=100, default=1234)
     field_doctor = models.CharField(max_length=255)
 
+    @staticmethod
+    def get_customers_by_name(doctor):
+        try:
+            return Doctor.objects.get(doctor=doctor)
+        except:
+            return False
 
 

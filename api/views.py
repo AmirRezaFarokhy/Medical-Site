@@ -30,7 +30,7 @@ def CreateListAPIView(request, pk=None,*args, **kwargs):
         
 
 @api_view(['GET', 'PUT'])
-def RetrieveAPIView(request, pk):
+def RetrieveUpdateAPIView(request, pk):
     if request.method=='GET':
         if pk is not None:
             obj = get_object_or_404(PatientProfile, pk=pk)
@@ -39,6 +39,18 @@ def RetrieveAPIView(request, pk):
 
         return Response({"invalid": "not good url id"}, 
                         status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method=='PUT':
+        obj = get_object_or_404(PatientProfile, pk=pk)
+        serializer = SerializetionPatient(instance=obj, 
+                                          data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'data':serializer.data}, 
+                             status=status.HTTP_200_OK)
+        return Response({"invalid": "not good url id or data"}, 
+                        status=status.HTTP_400_BAD_REQUEST)       
+
 
 
 

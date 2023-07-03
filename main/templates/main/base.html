@@ -15,20 +15,28 @@
   <nav>
 
     <div class="nav-wrapper">
+      {% if request.session.doctor %}
 
-      <a href="#!" class="brand-logo">Doctors Profiles</a>
+
+      <a href="#!" class="brand-logo">{{data.doctor}}</a>
       <ul class="right hide-on-med-and-down">
+
+      {% else %}
+        <a href="#!" class="brand-logo">Doctors Profiles</a>
+        <ul class="right hide-on-med-and-down">
     
-        {% if request.session.customer %}
+      {% endif %}
+
+        {% if request.session.doctor %}
 
           <ul>
-            <li><a  href="/logout">Logout</a></li>
+            <li><a  href="/logout">Logout Doctors</a></li>
           </ul>
         {% else %}
        
         <ul>
           
-          <li><a href="/login">Login</a></li>
+          <li><a href="/login">Login Doctors</a></li>
           <li><a href="/signup">Sign up</a></li>
 
         </ul>
@@ -43,19 +51,25 @@
   <nav>
     <div class="nav-wrapper">
 
-            <div class="search-box">
+        <div class="search-box">
+          
           <form action="{% url 'main:search' %}" method="get">  
-          <input name="q" type="text" placeholder="Type to Search...">
+          <input name="q" type="text" placeholder="Search patiants">
+
+
           <button class="btn waves-effect waves-light">Search
-            <i class="material-icons right"></i>
+
           </button>
-        </div>
+        
           <!-- <label class="label-icon" for="search"><i class="material-icons">search</i></label> -->
           <!-- <i class="material-icons">close</i> -->
         </form>
-        
+      </div>
         </div>
 
   </nav>
 
+  <body>
   {% block content %}{% endblock %}
+
+</body>

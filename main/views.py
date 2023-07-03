@@ -37,25 +37,23 @@ class Login(View):
         return render(request=request, template_name='main/login.html')
 
     def post(self, request):
-        email = request.POST.get("email")
+        name = request.POST.get("doctor")
         password = request.POST.get("password")
-        customer = Doctor.get_customers_by_email(email)
+        doctor = Doctor.get_customers_by_name(name)
+        print(doctor)
         error_message = None
-        if customer:
-            flag = check_password(password, customer.password)
-            if flag:
-                request.session['customer'] = customer.id
-                if Login.return_url:
-                    return HttpResponseRedirect(Login.return_url)
-                else:
-                    return_url = None
-                    return redirect("main:homepage")
+        if doctor:
+            if doctor.doctor==name and doctor.password==password:
+                request.session['doctor'] = doctor.id
+                return_url = None
+                return redirect("main:homepage")
             else:
                 error_message = 'Invalid !!'
+
         else:
             error_message = 'Invalid !!'
 
-        print(email, password)
+        print(name, password)
         return render(request=request, 
                       template_name="main/login.html", 
                       context={"error":error_message})
@@ -125,7 +123,7 @@ class SearchView(ListView):
 
 def logout(request):
     request.session.clear()
-    return redirect('login')
+    return redirect('main:homepage')
 
 
 def homepage(request):
@@ -158,8 +156,10 @@ def homepage(request):
         patient.save()
         return redirect('main:homepage')
 
+    # print(request.session['doctor'], 'asdasd')
     return render(request, 
-                  template_name='main/home.html')
+                  template_name='main/home.html',
+                  context={'data':'sd'})
 
 
 

@@ -2,7 +2,7 @@ from django.urls import path
 
 from api.views import (
             CreateListAPIView, 
-            RetrieveAPIView,
+            RetrieveUpdateAPIView,
             # update_apiview,
             # delete_apiview,
             # doctorApiView
@@ -10,7 +10,7 @@ from api.views import (
 
 urlpatterns = [
     path('', CreateListAPIView, name='apiview'),
-    path('<int:pk>/', RetrieveAPIView, name='idapiview'),
+    path('<int:pk>/', RetrieveUpdateAPIView, name='idapiview'),
     # path('<int:pk>/update', update_apiview, name='updateapiview'),
     # path('<int:pk>/delete', delete_apiview, name='deleteapiview'),
 ]
