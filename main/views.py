@@ -146,22 +146,22 @@ def homepage(request):
         }
 
         error_message = None
-        patient = PatientProfile(name=name,
+        patient_values = PatientProfile(name=name,
                                 last_name=lastname,
                                 age=age,
                                 description=description,
                                 email=email)
-        error_message = validateCustomer(patient)
+        error_message = validateCustomer(patient_values)
         print(error_message)
 
+        doctor_profile_data = Doctor.objects.get(id=request.session['doctor'])
         if not error_message:
             print(values)
-            patient.save()
+            patient_values.save()
+            doctor_profile_data.patient.add(patient_values)
             return redirect('main:homepage')
-
-        doctor_profile_data = Doctor.objects.get(id=request.session['doctor'])
-
-        doctor_profile_data
+            
+            
         return render(request, 
                     template_name='main/home.html',
                     context={'data':doctor_profile_data})
