@@ -3,12 +3,17 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
 from api.serializers import SerializetionPatient
 from main.models import Doctor, PatientProfile
 
+# Class Based View
+
+
+# Function Based View
 
 @api_view(['GET', 'POST'])
-def CreateListAPIView(request, pk=None,*args, **kwargs):
+def CreateListAPIViewFunctionBased(request, pk=None,*args, **kwargs):
     if request.method=='GET':
         if pk is not None:
             obj = get_object_or_404(PatientProfile, pk=pk)
@@ -30,7 +35,7 @@ def CreateListAPIView(request, pk=None,*args, **kwargs):
         
 
 @api_view(['GET', 'PUT'])
-def RetrieveUpdateAPIView(request, pk):
+def RetrieveUpdateAPIViewFunctionBased(request, pk):
     if request.method=='GET':
         if pk is not None:
             obj = get_object_or_404(PatientProfile, pk=pk)
@@ -52,7 +57,21 @@ def RetrieveUpdateAPIView(request, pk):
                         status=status.HTTP_400_BAD_REQUEST)       
 
 
+@api_view(['GET', 'DELETE'])
+def DeleteAPIViewFunctionBased(request, pk):
+    try:
+        patient = PatientProfile.objects.get(pk=pk)
+    except Exception as e:
+        return HttpResponse(status=404)
 
+    if request.method=='GET':
+        serializer = SerializetionPatient(patient)
+        return Response(serializer.data)
+
+    if request.method=='DELETE':
+        patient.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
 
 
 

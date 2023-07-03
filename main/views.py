@@ -127,39 +127,47 @@ def logout(request):
 
 
 def homepage(request):
-    postdata = request.POST 
-    name = postdata.get('name')
-    lastname = postdata.get('lastname')
-    age = postdata.get('age')
-    description = postdata.get('description')
-    email = postdata.get('email')
+    # this is a good thinking about it and great work...
+    id_session = request.session.get('doctor')
+    if id_session is not None:
+        postdata = request.POST 
+        name = postdata.get('name')
+        lastname = postdata.get('lastname')
+        age = postdata.get('age')
+        description = postdata.get('description')
+        email = postdata.get('email')
 
-    values = {
-        'name': name, 
-        'last_name': lastname,
-        'age': age,
-        'description': description,
-        'email': email
-    }
+        values = {
+            'name': name, 
+            'last_name': lastname,
+            'age': age,
+            'description': description,
+            'email': email
+        }
 
-    error_message = None
-    patient = PatientProfile(name=name,
-                             last_name=lastname,
-                             age=age,
-                             description=description,
-                             email=email)
-    error_message = validateCustomer(patient)
-    print(error_message)
+        error_message = None
+        patient = PatientProfile(name=name,
+                                last_name=lastname,
+                                age=age,
+                                description=description,
+                                email=email)
+        error_message = validateCustomer(patient)
+        print(error_message)
 
-    if not error_message:
-        print(values)
-        patient.save()
-        return redirect('main:homepage')
+        if not error_message:
+            print(values)
+            patient.save()
+            return redirect('main:homepage')
 
-    # print(request.session['doctor'], 'asdasd')
+        doctor_profile_data = Doctor.objects.get(id=request.session['doctor'])
+
+        doctor_profile_data
+        return render(request, 
+                    template_name='main/home.html',
+                    context={'data':doctor_profile_data})
+
     return render(request, 
-                  template_name='main/home.html',
-                  context={'data':'sd'})
+                  template_name='main/home.html') 
 
 
 

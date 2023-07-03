@@ -20,7 +20,7 @@
                 </div>
                 {% endif %}
 
-
+                {% if request.session.doctor %}
                 <div class="form-group">
                     <label for="">name</label>
                     <input type="text" 
@@ -65,6 +65,8 @@
 
                 <button type="submit" class="btn btn-sm btn-success col-lg-12">Save Data</button>
                 
+                {% endif %}
+
             </form>
         </div>
     </div>
