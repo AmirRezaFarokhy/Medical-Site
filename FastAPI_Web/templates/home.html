@@ -1,4 +1,4 @@
-{% extends 'main/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 
@@ -11,14 +11,7 @@
             </div>
             <h3 class="alert alert-light rounded-pill" style="text-align:center" >Patient Profile</h3>
             <form method="POST">
-                
-                {% csrf_token %}
-
-                {% if error%}
-                <div class="alert alert-danger" role="alert">
-                    {{error}}
-                </div>
-                {% endif %}
+            
 
                 {% if request.session.doctor %}
                 <div class="form-group">
