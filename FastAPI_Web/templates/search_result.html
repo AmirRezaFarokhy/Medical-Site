@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #070000;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(n) {
+  background-color: #ffffff;
+}
+</style>
+</head>
+<body>
+
+  <h1>Search Results</h1>
+
+<ul>
+
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <h2>{{ message }}</h2>
+      {% endfor %}
+  </ul>
+  {% endif %}
+
+
+  {% if not messages %}
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">NameBooks</th>
+      </tr>
+    </thead>
+    <tbody>
+  {% for name in object_list %}
+    <!-- <li>
+      <h2><a href="{{book.book_author}}/{{book.book_name}}/">{{ book.book_name }}</a></h2>
+    </li> -->
+    
+      
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td><h2>{{ name.name }}</a></h2></td>
+        </tr>
+     
+
+  {% endfor %}
+</tbody>
+</table>
+
+{% endif %}
+
+
+</ul>
+</body>
