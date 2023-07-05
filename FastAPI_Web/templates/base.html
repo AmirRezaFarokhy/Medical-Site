@@ -15,10 +15,10 @@
   <nav>
 
     <div class="nav-wrapper">
-      {% if request.session.doctor %}
+      {% if data %}
 
 
-      <a href="#!" class="brand-logo">{{data}}</a>
+      <a href="#!" class="brand-logo">Doctor Come in</a>
       <ul class="right hide-on-med-and-down">
 
       {% else %}
@@ -27,7 +27,7 @@
     
       {% endif %}
 
-        {% if request.session.doctor %}
+      {% if data %}
 
           <ul>
             <li><a  href="/logout">Logout Doctors</a></li>
