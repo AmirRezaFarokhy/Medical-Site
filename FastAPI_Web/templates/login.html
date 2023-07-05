@@ -20,7 +20,7 @@
             <form action="/login" method="POST">
                 
 
-
+                
 
                 <!-- email -->
                 <div class="form-group">
@@ -48,7 +48,10 @@
 
                 <button type="submit" class="btn btn-sm btn-success col-lg-12">Login</button>
 
+                {% if not request.session.doctor %}
+                    <p>{{data}}</p>
 
+                {% endif %}
                 
             </form>
         </div>
