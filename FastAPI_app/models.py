@@ -3,10 +3,10 @@ import psycopg2 as pg
 try:
     conn = pg.connect(
         host='localhost',
-        port=5432,
-        dbname='postgres',
-        password='postgres',
-        user='postgres'
+            port=5432,
+            dbname='YOUR DB NAMR',
+            password='YOUR PASSWORD',
+            user='YOUR USER NAME'
     )
     print("Connected succesfully...")
 
