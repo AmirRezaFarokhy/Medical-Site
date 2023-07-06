@@ -12,7 +12,12 @@
 
 
 # Description project
+In this project, I wanted to compare two Python libraries, FastAPI and Django.
+Django: In Django, most of it has already been done and you don't have much power to change it, but at the same time, you can move your project forward much more easily and cleanly, and in terms of security, it is better than FastAPI.
+FastAPI: In FastAPI, you have to do most of the work and raise it from the Projero base, and one of the important advantages of FastAPI is its high speed, for example, to search in a library site, FastAPI is faster than Django.
+If you want a better comparison, see the link below :)
 
+https://sunscrapers.com/blog/django-vs-fastapi-a-detailed-comparison/
 
 
 
@@ -41,7 +46,8 @@ To install Docker on MacOs, refer to the link below:
 https://www.makeuseof.com/how-to-install-docker-mac/
 
 
-## Build 
+## Build
+for build FastAPi Project you need go to `cd FastAPI_app` and run the bash below, also for build Django_app you must go to `cd Django_app` and run the bash below. 
 ```bash
 docker-compose up -d --build
 ```
