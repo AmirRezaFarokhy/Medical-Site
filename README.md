@@ -8,7 +8,7 @@
 <a href="https://www.docker.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a>
 <a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a>
 </p>
-<a href="https://www.django-rest-framework.org/" target="_blank"> <img alt="Django REST Framework" title="Logo by Jake 'Sid' Smith" src="img/logo.png" style="display: block; margin: 0 auto 0 auto" width="600px">
+<a href="https://www.django-rest-framework.org/" target="_blank"> <img src="https://github.com/tandpfun/skill-icons/blob/main/icons/Django.svg" alt="Django" width="40" height="40"/></a>
 
 
 ## Clone the repo
