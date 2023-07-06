@@ -42,9 +42,9 @@ async def homepage(request:Request):
     conn = pg.connect(
             host='localhost',
             port=5432,
-            dbname='postgres',
-            password='postgres',
-            user='postgres'
+            dbname='YOUR DB NAMR',
+            password='YOUR PASSWORD',
+            user='YOUR USER NAME'
         )
     print("Connected succesfully...")
     conn.autocommit = True
@@ -100,10 +100,10 @@ async def Login(request:Request):
 async def Logined(request:Request):
     conn = pg.connect(
         host='localhost',
-        port=5432,
-        dbname='postgres',
-        password='postgres',
-        user='postgres'
+            port=5432,
+            dbname='YOUR DB NAMR',
+            password='YOUR PASSWORD',
+            user='YOUR USER NAME'
     )
     print("Connected succesfully...")
 
