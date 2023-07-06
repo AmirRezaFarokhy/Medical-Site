@@ -32,15 +32,15 @@ git clone https://github.com/AmirRezaFarokhy/Medical-Site/tree/main
 You need to install docker to use the project.
 To install Docker on Linux, refer to the link below:
 
-https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi81pn2_Pn_AhX2_rsIHSSPA5AQFnoECA8QAQ&url=https%3A%2F%2Fdocs.docker.com%2Fengine%2Finstall%2Fubuntu%2F&usg=AOvVaw2uFia4sMgzkReEqv8xLNZy&opi=89978449
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
 
 To install Docker on Windows, refer to the link below:
 
-https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiO3qvD_fn_AhUqhP0HHZkNAeEQFnoECBEQAQ&url=https%3A%2F%2Fdocs.docker.com%2Fdesktop%2Finstall%2Fwindows-install%2F&usg=AOvVaw0gOH_f-GJONTgQiwOHyibD&opi=89978449
+https://www.simplilearn.com/tutorials/docker-tutorial/install-docker-on-windows
 
 To install Docker on MacOs, refer to the link below:
 
-https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjFjdTk_fn_AhWKgf0HHfMDAdAQFnoECA8QAQ&url=https%3A%2F%2Fdocs.docker.com%2Fdesktop%2Finstall%2Fmac-install%2F&usg=AOvVaw3Qao_1wpqslGHBBIrlxnZz&opi=89978449
+https://www.makeuseof.com/how-to-install-docker-mac/
 
 
 ## Build 
