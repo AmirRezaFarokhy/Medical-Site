@@ -56,6 +56,6 @@ for build FastAPi Project you need go to `cd FastAPI_app` and run the bash below
 docker-compose up -d --build
 ```
 
-run this to your google.com <http://localhost:8000/docs> 
+run this to your google.com <http://localhost:8000/> 
 
 
