@@ -30,7 +30,7 @@ git clone https://github.com/AmirRezaFarokhy/Medical-Site/tree/main
 
 ## Install Docker
 You need to install docker to use the project.
-```
+
 To install Docker on Linux, refer to the link below:
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
 
@@ -39,7 +39,7 @@ https://www.simplilearn.com/tutorials/docker-tutorial/install-docker-on-windows
 
 To install Docker on MacOs, refer to the link below:
 https://www.makeuseof.com/how-to-install-docker-mac/
-```
+
 
 ## Build 
 ```bash
