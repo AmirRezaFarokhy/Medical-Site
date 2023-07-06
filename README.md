@@ -22,7 +22,7 @@ https://sunscrapers.com/blog/django-vs-fastapi-a-detailed-comparison/
 
 
 
-## Result Video for Djago App
+## Result Video for Django App
 [Screencast from 23-07-06 15:34:27.webm](https://github.com/AmirRezaFarokhy/Medical-Site/assets/113052872/50868001-040e-4c7c-b028-17e8b3dc5c2e)
 
 
