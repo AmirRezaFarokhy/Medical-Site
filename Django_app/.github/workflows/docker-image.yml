@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: Django_app/docker-compose build . 
+      run: Django_app/docker build . --file Dockerfile --tag my-image-name:$(date +%s)
