@@ -17,7 +17,7 @@ services:
     depends_on:
       - db
 
- db:
+  db:
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data
