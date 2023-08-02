@@ -80,8 +80,8 @@ WSGI_APPLICATION = 'Django_Web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_DRIVER','django.db.backends.postgresql'),
-        'USER': os.environ.get('PG_USER','postgres'),
-        'PASSWORD':os.environ.get('PG_PASSWORD','postgres'),
+        'USER': os.environ.get('PG_USER','YOUR POSTGRE USER'),
+        'PASSWORD':os.environ.get('PG_PASSWORD','YOUR POSTGRE PASSWOR'),
         'NAME': os.environ.get('PG_DB','postgres'),
         'PORT': os.environ.get('PG_PORT','5432'),
         'HOST': os.environ.get('PG_HOST','localhost'), # uses the container if set, otherwise it runs locally
