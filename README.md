@@ -11,7 +11,6 @@
 </p>
 
 
-
 # Description project ⚕️
 In this project, I wanted to compare two Python libraries, FastAPI and Django.
 Django: In Django, most of it has already been done and you don't have much power to change it, but at the same time, you can move your project forward much more easily and cleanly, and in terms of security, it is better than FastAPI.
